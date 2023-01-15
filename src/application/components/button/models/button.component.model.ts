@@ -1,7 +1,6 @@
-import { ButtonProps } from '@chakra-ui/react'
-import React from 'react'
+import { ButtonHTMLAttributes } from 'react'
 
-export type ButtonModel = ButtonProps & {
-  children: React.ReactNode
+export type ButtonModel = ButtonHTMLAttributes<HTMLButtonElement> & {
+  label: string
   link: string
 }
