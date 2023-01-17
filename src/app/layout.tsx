@@ -1,5 +1,4 @@
 import { DM_Sans, Raleway } from '@next/font/google'
-import 'react-modern-drawer/dist/index.css'
 
 import '@/app/presentation/styles/global.css'
 
