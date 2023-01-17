@@ -1,4 +1,7 @@
 import { DM_Sans, Raleway } from '@next/font/google'
+import 'react-modern-drawer/dist/index.css'
+
+import '../app/styles/global.css'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -22,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${raleway.variable}`}>
       <head />
-      <body>{children}</body>
+      <body className="mx-auto flex w-full max-w-[1200px] flex-col px-6 pb-16 md:px-8 xl:px-0">
+        {children}
+      </body>
     </html>
   )
 }
