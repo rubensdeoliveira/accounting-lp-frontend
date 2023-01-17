@@ -1,5 +1,9 @@
-import Header from '@/app/components/header/header.component'
-import { Footer, HeroSection, WhyChooseUsSection } from '@/app/sections'
+import Header from '@/app/presentation/components/header/header.component'
+import {
+  Footer,
+  HeroSection,
+  WhyChooseUsSection,
+} from '@/app/presentation/sections'
 
 export default function Home() {
   return (

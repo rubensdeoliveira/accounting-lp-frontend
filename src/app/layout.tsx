@@ -1,7 +1,7 @@
 import { DM_Sans, Raleway } from '@next/font/google'
 import 'react-modern-drawer/dist/index.css'
 
-import '../app/styles/global.css'
+import '@/app/presentation/styles/global.css'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],

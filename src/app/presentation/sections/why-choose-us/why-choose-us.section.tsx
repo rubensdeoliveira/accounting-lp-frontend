@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SectionInfo } from '@/app/components'
+import { SectionInfo } from '@/app/presentation/components'
 import { WhyChooseUsCard } from './components'
 
 export function WhyChooseUsSection() {

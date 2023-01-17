@@ -1,4 +1,4 @@
-import { LearnMoreButton } from '@/app/components'
+import { LearnMoreButton } from '@/app/presentation/components'
 import React from 'react'
 import { FiShuffle } from 'react-icons/fi'
 

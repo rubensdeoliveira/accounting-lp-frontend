@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { MenuItems } from './components'
 import Drawer from 'react-modern-drawer'
-import { CallToAction } from '@/app/components/header/components'
+import { CallToAction } from '@/app/presentation/components/header/components'
 
 export default function Menu() {
   const [isOpen, setIsOpen] = useState(false)
