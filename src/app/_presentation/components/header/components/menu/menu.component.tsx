@@ -5,6 +5,7 @@ import { FiMenu, FiX } from 'react-icons/fi'
 import { CallToAction } from '@/app/_presentation/components/header/components'
 import { Drawer } from './components/drawer'
 import { MenuItems } from './components'
+import DarkModeSwitcher from '../dark-mode-switcher/dark-mode-switcher.component'
 
 type MenuModel = {
   className?: string
@@ -20,6 +21,7 @@ export default function Menu({ className }: MenuModel) {
   return (
     <div className={className}>
       <div className="flex items-center gap-6 md:hidden">
+        <DarkModeSwitcher />
         <FiMenu size={30} onClick={toggleDrawer} />
         <Drawer isOpen={isOpen} onSetIsOpen={toggleDrawer}>
           <div className="flex flex-col items-center justify-center text-center">

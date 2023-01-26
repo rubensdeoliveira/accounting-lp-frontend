@@ -1,39 +1,30 @@
 'use client'
 
+import { useAtom } from 'jotai'
+import { setCookie } from 'nookies'
+import { useCallback } from 'react'
 import { FiMoon, FiSun } from 'react-icons/fi'
-import { setCookie, parseCookies } from 'nookies'
 
-type DarkModeSwitcherModel = {
-  className?: string
-}
+import { themeAtom } from '@/app/_presentation/atoms'
+import { DarkModeSwitcherModel } from './models'
 
 export default function DarkModeSwitcher({ className }: DarkModeSwitcherModel) {
-  const { 'color-theme': colorTheme } = parseCookies()
+  const [theme, setTheme] = useAtom(themeAtom)
+
+  const toggleTheme = useCallback(() => {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+    setCookie(null, 'color-theme', newTheme, {
+      path: '/',
+    })
+  }, [theme])
 
   return (
-    <div id={`theme-toggle`} className={className}>
-      {colorTheme === 'light' ? (
-        <FiSun
-          id={`theme-toggle-dark-icon`}
-          className=" h-[30px] w-[30px]"
-          onClick={() => {
-            setCookie(null, 'color-theme', 'dark', {
-              maxAge: 30 * 24 * 60 * 60,
-              path: '/',
-            })
-          }}
-        />
+    <div className={className} onClick={toggleTheme}>
+      {theme === 'light' ? (
+        <FiMoon className="h-[30px] w-[30px]" />
       ) : (
-        <FiMoon
-          id={`theme-toggle-light-icon`}
-          className=" h-[30px] w-[30px]"
-          onClick={() => {
-            setCookie(null, 'color-theme', 'light', {
-              maxAge: 30 * 24 * 60 * 60,
-              path: '/',
-            })
-          }}
-        />
+        <FiSun className="h-[30px] w-[30px]" />
       )}
     </div>
   )

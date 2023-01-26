@@ -6,10 +6,10 @@ import { HeaderModel } from './models'
 export function Header({ logo }: HeaderModel) {
   return (
     <header className="flex w-full items-center justify-between py-12">
-      <Logo url={logo.url} className="order-1 md:order-1" />
-      <Menu className="order-3 md:order-2" />
-      <DarkModeSwitcher className="order-2 md:order-3" />
-      <div className="hidden md:order-4 md:flex">
+      <Logo url={logo.url} />
+      <Menu />
+      <div className="hidden items-center gap-6 md:flex">
+        <DarkModeSwitcher />
         <CallToAction link="/area-do-cliente" />
       </div>
     </header>
