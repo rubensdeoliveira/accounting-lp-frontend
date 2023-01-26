@@ -1,32 +1,42 @@
-import Header from '@/app/presentation/components/header/header.component'
 import { client } from '@/infra/graphql/common/client'
 import { getHomePageQuery } from '@/infra/graphql/home/queries'
-import { normalizeData } from '@/app/presentation/helpers'
-import { HeroSection, WhyChooseUsSection } from '@/app/presentation/sections'
+import { normalizeData } from '@/app/_presentation/helpers'
+import { HeroSection, WhyChooseUsSection } from '@/app/_presentation/sections'
+import { Footer, Header, Main } from '@/app/_presentation/components'
+import { getSharedQuery } from '@/infra/graphql/shared/queries'
 import { HomeQueryModel } from '@/infra/graphql/home/models'
-import { Footer } from '@/app/presentation/components'
+import { SharedQueryModel } from '@/infra/graphql/shared/models'
 
-async function getHomeData(): Promise<HomeQueryModel> {
+type GetHomeDataResult = {
+  home: HomeQueryModel
+  shared: SharedQueryModel
+}
+
+async function getHomeData(): Promise<GetHomeDataResult> {
   try {
-    const response = await client.request(getHomePageQuery)
-    const { home } = normalizeData(response)
-    return home
+    const [homeResponse, sharedResponse] = await Promise.all([
+      client.request(getHomePageQuery),
+      client.request(getSharedQuery),
+    ])
+    const { home } = normalizeData(homeResponse)
+    const { shared } = normalizeData(sharedResponse)
+    return { home, shared }
   } catch {
     throw new Error('Failed to fetch data')
   }
 }
 
 export default async function Home() {
-  const data = await getHomeData()
+  const { home, shared } = await getHomeData()
 
   return (
     <>
-      <Header />
-      <main className="flex flex-col gap-[10rem]">
-        <HeroSection {...data.hero} />
-        <WhyChooseUsSection {...data.whyChooseUs} />
-      </main>
-      <Footer {...data.footer} />
+      <Header {...shared.header} />
+      <Main>
+        <HeroSection {...home.hero} />
+        <WhyChooseUsSection {...home.whyChooseUs} />
+      </Main>
+      <Footer {...shared.footer} />
     </>
   )
 }

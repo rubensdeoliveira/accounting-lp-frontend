@@ -6,9 +6,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'gray500': '#2A2A39',
-        'gray900': '#181828',
-        'red500': '#ff0000'
+        // 'gray500': '#2A2A39',
+        'gray500': '#33373d',
+        // 'gray900': '#181828',
+        'gray900': '#1d2025',
+        // 'red500': '#d2140a'
+        'red500': '#d2140a'
+        
       },
       fontFamily: {
         raleway: 'var(--font-raleway)',
@@ -19,5 +23,8 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require("flowbite/plugin")
+  ],
+  darkMode: 'class'
 }
