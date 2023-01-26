@@ -6,20 +6,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'gray900': '#181828',
-        'red500': 'red'
+        // 'gray500': '#2A2A39',
+        'gray500': '#33373d',
+        // 'gray900': '#181828',
+        'gray900': '#1d2025',
+        // 'red500': '#d2140a'
+        'red500': '#d2140a'
+        
       },
-      maxWidth: {
-        'screen-max-size': '1200px',
-        'hero-texts-container': '527px'
+      fontFamily: {
+        raleway: 'var(--font-raleway)',
+        dmSans: 'var(--font-dmSans)',
       },
-      width: {
-        'hero-image': '578px'
-      },
-      height: {
-        'hero-image': '670px',
-      },
+      letterSpacing: {
+        'default': '-0.03em'
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require("flowbite/plugin")
+  ],
+  darkMode: 'class'
 }

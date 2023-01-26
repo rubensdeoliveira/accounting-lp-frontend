@@ -1,26 +1,7 @@
 import { gql } from 'graphql-request'
 
-export const getHomePageQuery = gql`
-  fragment GetHero on Home {
-    hero {
-      image {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      title
-      description
-      subtitle
-      button {
-        label
-        link
-      }
-    }
-  }
-
-  fragment GetWhyChooseUs on Home {
+export const getOurServicesPageQuery = gql`
+  fragment GetWhyChooseUs on OurService {
     whyChooseUs {
       sectionInfo {
         title
@@ -39,10 +20,9 @@ export const getHomePageQuery = gql`
   }
 
   query {
-    home {
+    ourService {
       data {
         attributes {
-          ...GetHero
           ...GetWhyChooseUs
         }
       }

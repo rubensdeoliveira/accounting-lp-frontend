@@ -1,16 +1,3 @@
-export type HeroQueryModel = {
-  title: string
-  description: string
-  subtitle: string
-  image: {
-    url: string
-  }
-  button: {
-    label: string
-    link: string
-  }
-}
-
 export type WhyChooseUsCardQueryModel = {
   id: string
   iconType: string
@@ -29,7 +16,6 @@ export type WhyChooseUsQueryModel = {
   whyChooseUsCards: WhyChooseUsCardQueryModel[]
 }
 
-export type HomeQueryModel = {
-  hero: HeroQueryModel
+export type OurServicesQueryModel = {
   whyChooseUs: WhyChooseUsQueryModel
 }
