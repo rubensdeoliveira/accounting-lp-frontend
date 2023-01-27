@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { SectionInfo } from '@/client/presentation/components'
+import { SectionInfo } from '@/client/application/components'
 import { WhyChooseUsCard } from './components'
 import { WhyChooseUsSectionModel } from './models'
 

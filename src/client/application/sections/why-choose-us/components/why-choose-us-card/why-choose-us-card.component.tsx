@@ -1,7 +1,7 @@
 import React from 'react'
 import { FiShuffle } from 'react-icons/fi'
 
-import { LearnMoreButton } from '@/client/presentation/components'
+import { LearnMoreButton } from '@/client/application/components'
 import { WhyChooseUsCardModel } from './models'
 
 export function WhyChooseUsCard({

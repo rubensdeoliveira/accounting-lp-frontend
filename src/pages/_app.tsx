@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app'
 
-import '@/client/presentation/styles/global.css'
-import { Providers } from '@/client/presentation/providers'
-import { trpc } from '@/utils/trpc'
+import '@/client/application/styles/global.css'
+import { Providers } from '@/client/application/providers'
+import { api } from '@/utils/api'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -12,4 +12,4 @@ function App({ Component, pageProps }: AppProps) {
   )
 }
 
-export default trpc.withTRPC(App)
+export default api.withTRPC(App)

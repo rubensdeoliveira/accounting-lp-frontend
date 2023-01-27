@@ -1,4 +1,4 @@
-import { Button } from '@/client/presentation/components'
+import { Button } from '@/client/application/components'
 import { CallToActionModel } from './models'
 
 export function CallToAction({ link }: CallToActionModel) {

@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
-import { dmSans, raleway } from '@/client/presentation/fonts'
+import { dmSans, raleway } from '@/client/application/fonts'
 
 export default function Document() {
   return (

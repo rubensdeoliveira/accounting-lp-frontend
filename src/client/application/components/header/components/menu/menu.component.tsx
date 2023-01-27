@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react'
 import { FiMenu, FiX } from 'react-icons/fi'
-import { CallToAction } from '@/client/presentation/components/header/components'
+import { CallToAction } from '@/client/application/components/header/components'
 import { Drawer } from './components/drawer'
 import { MenuItems } from './components'
 import DarkModeSwitcher from '../dark-mode-switcher/dark-mode-switcher.component'
