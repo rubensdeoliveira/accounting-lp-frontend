@@ -27,9 +27,11 @@ export function Footer({
       contactLinks.length &&
       contactLinks.map(contactLink => (
         <Link href={contactLink.link} key={contactLink.id}>
-          <div className="flex gap-4">
-            <FiPhone size={24} />
-            <span>{contactLink.text}</span>
+          <div className="flex items-center gap-4">
+            <FiPhone size={24} className="flex-shrink-0" />
+            <span className="text-sm leading-[1.2] text-black/70 dark:text-white/70 md:text-[0.9375rem] lg:text-base">
+              {contactLink.text}
+            </span>
           </div>
         </Link>
       )),
@@ -38,20 +40,32 @@ export function Footer({
 
   return (
     <footer className="flex flex-col pb-16">
-      <div className="mb-24 flex justify-between">
-        <div className="flex w-full max-w-[478px] flex-col gap-10">
-          <h1 className="">{title1}</h1>
-          <p className="">{description}</p>
+      <div className="flex flex-col justify-between border-b-0 border-b-black/[0.2] dark:border-b-white/[0.08] md:flex-row md:gap-4 md:border-b-2 md:pb-24">
+        <div className="flex w-full flex-col gap-10 border-b-2 border-b-black/[0.2] pb-10 dark:border-b-white/[0.08] md:max-w-[478px] md:border-b-0 md:pb-0">
+          <h1 className="font-raleway text-xl font-medium leading-[1.2] md:text-[1.375rem] md:font-semibold lg:text-2xl">
+            {title1}
+          </h1>
+          <p className="text-sm leading-[1.2] text-black/70 dark:text-white/70 md:text-[0.9375rem] lg:text-base">
+            {description}
+          </p>
           <div className="flex items-center gap-4">{renderIconButtonLinks}</div>
         </div>
-        <div className="flex w-full max-w-[293px] flex-col gap-10">
-          <h1>{title2}</h1>
+        <div className="flex w-full flex-col gap-10 border-b-2 border-b-black/[0.2] py-10 dark:border-b-white/[0.08] md:max-w-[293px] md:border-b-0 md:py-0">
+          <h1 className="font-raleway text-xl font-medium leading-[1.2] md:text-[1.375rem] md:font-semibold lg:text-2xl">
+            {title2}
+          </h1>
           <div className="flex flex-col gap-6">{renderContactLinks}</div>
         </div>
       </div>
-      <div className="mb-[2.5rem] h-[1px] w-full bg-gray-600"></div>
-      <p className="text-center">
-        JR Contabilidade e Sistemas © Feito com ❤️ por Rubens de Oliveira
+      <p className="pt-10 text-center text-xs text-black/70 dark:text-white/70 md:text-[0.8125rem] lg:text-sm">
+        JR Contabilidade e Sistemas © Criado por{' '}
+        <Link
+          href="https://rubensdeoliveira.com"
+          target="_blank"
+          className="font-medium text-red500"
+        >
+          Rubens de Oliveira
+        </Link>
       </p>
     </footer>
   )

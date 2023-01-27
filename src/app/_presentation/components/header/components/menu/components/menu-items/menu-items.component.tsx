@@ -20,8 +20,8 @@ export function MenuItems() {
           key={menuItem.label}
           className={`leading-[1.2]  ${
             resolveMenuSelected === menuItem
-              ? 'font-medium text-white'
-              : 'font-normal text-white/70'
+              ? 'font-medium text-white md:text-gray-900 md:dark:text-white'
+              : 'font-normal text-white/70 md:text-gray-900/70 md:dark:text-white/70'
           }`}
         >
           <Link href={menuItem.link} className="leading-[1.2]">

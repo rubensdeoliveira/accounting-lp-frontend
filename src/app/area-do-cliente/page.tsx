@@ -20,19 +20,19 @@ export default async function ClientArea() {
     <div className="flex min-h-[100vh] flex-col">
       <Header {...shared.header} />
       <div className="flex flex-1 items-center justify-center py-16">
-        <form className="w-full max-w-[480px]">
-          <div className="mb-6">
+        <form className="flex w-full max-w-[480px] flex-col">
+          <div className="mb-3">
             <label
               htmlFor="email"
               className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
             >
-              Your email
+              E-mail
             </label>
             <input
               type="email"
               id="email"
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-              placeholder="name@flowbite.com"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-red900 focus:ring-red-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-red500 dark:focus:ring-red-500"
+              placeholder="Digite um e-mail válido"
               required
             />
           </div>
@@ -41,20 +41,21 @@ export default async function ClientArea() {
               htmlFor="password"
               className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
             >
-              Your password
+              Senha
             </label>
             <input
               type="password"
               id="password"
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-red900 focus:ring-red-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-red500 dark:focus:ring-red-500"
               required
+              placeholder="Digite sua senha"
             />
           </div>
           <button
             type="submit"
-            className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+            className="w-full self-end rounded-lg bg-red900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red500 dark:hover:bg-red-700 dark:focus:ring-red-800"
           >
-            Submit
+            Entrar
           </button>
         </form>
       </div>

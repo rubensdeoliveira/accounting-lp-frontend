@@ -1,4 +1,8 @@
-export type LogoModel = {
+type LogoItemModel = {
   url: string
-  className?: string
+}
+
+export type LogoModel = {
+  logo: LogoItemModel
+  logoDark: LogoItemModel
 }

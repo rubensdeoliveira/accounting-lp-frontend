@@ -18,9 +18,9 @@ export function WhyChooseUsSection({
   )
 
   return (
-    <div className="flex flex-col items-end justify-between gap-[4.5rem]">
+    <div className="flex flex-col items-end justify-between gap-16 md:gap-[4.25rem] lg:gap-[4.5rem]">
       <SectionInfo {...sectionInfo} />
-      <div className="m-[0 auto] flex w-full flex-wrap items-center justify-center gap-5">
+      <div className="m-[0 auto] flex w-full flex-wrap items-center justify-center gap-6 md:gap-5">
         {renderWhyChooseUsCards}
       </div>
     </div>

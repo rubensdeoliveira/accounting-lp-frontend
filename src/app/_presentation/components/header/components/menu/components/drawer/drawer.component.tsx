@@ -12,7 +12,7 @@ export function Drawer({ children, isOpen, onSetIsOpen }: DrawerModel) {
     >
       <section
         className={
-          ' delay-400 absolute right-0 h-full w-screen max-w-xs transform bg-gray500 shadow-xl transition-all duration-500 ease-in-out  ' +
+          ' delay-400 absolute right-0 h-full w-screen max-w-xs transform bg-gray900 shadow-xl transition-all duration-500 ease-in-out dark:bg-gray500  ' +
           (isOpen ? ' translate-x-0 ' : ' translate-x-full ')
         }
       >

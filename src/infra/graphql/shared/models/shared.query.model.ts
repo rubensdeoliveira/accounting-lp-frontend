@@ -2,6 +2,9 @@ export type HeaderQueryModel = {
   logo: {
     url: string
   }
+  logoDark: {
+    url: string
+  }
 }
 
 export type IconButtonLinksQueryModel = {

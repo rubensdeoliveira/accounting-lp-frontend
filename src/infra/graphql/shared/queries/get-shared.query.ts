@@ -10,6 +10,13 @@ export const getSharedQuery = gql`
           }
         }
       }
+      logoDark {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
     }
   }
 

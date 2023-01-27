@@ -1,11 +1,28 @@
+'use client'
+
+import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
 import { LogoModel } from './models'
 
-export function Logo({ url, className }: LogoModel) {
+export default function Logo({ logo, logoDark }: LogoModel) {
+  const [mounted, setMounted] = useState(false)
+  const { theme } = useTheme()
+
+  useEffect(() => setMounted(true), [])
+
   return (
-    <Link href={'/'} className={className}>
-      <Image alt="Logo da JR Contabilidade" src={url} width={131} height={54} />
+    <Link href={'/'}>
+      {mounted && (
+        <Image
+          alt="Logo da JR Contabilidade"
+          src={theme === 'light' ? logo.url : logoDark.url}
+          width={96}
+          height={40}
+        />
+      )}
     </Link>
   )
 }

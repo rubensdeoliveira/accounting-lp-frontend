@@ -6,20 +6,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // 'gray500': '#2A2A39',
-        'gray500': '#33373d',
-        // 'gray900': '#181828',
-        'gray900': '#1d2025',
-        // 'red500': '#d2140a'
-        'red500': '#d2140a'
-        
+        'gray300': '#D9D9D9',
+        'gray500': '#2A2A39',
+        'gray900': '#232020',
+        'red500': '#d2140a',
+        'red900': '#6C0C0F'
+
       },
       fontFamily: {
         raleway: 'var(--font-raleway)',
         dmSans: 'var(--font-dmSans)',
       },
       letterSpacing: {
-        'default': '-0.03em'
+        'default': '-0.03em !important'
       }
     },
   },

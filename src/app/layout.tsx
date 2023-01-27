@@ -13,7 +13,7 @@ export default function RootLayout({
     <ServerThemeProvider>
       <html lang="en" className={`${dmSans.variable} ${raleway.variable}`}>
         <head />
-        <body className="mx-auto flex w-full max-w-[1200px] flex-col px-6 md:px-8 xl:px-0">
+        <body className="mx-auto flex w-full max-w-[1200px] flex-col px-5 xl:px-0">
           <Providers>{children}</Providers>
         </body>
       </html>

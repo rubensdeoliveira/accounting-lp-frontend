@@ -25,7 +25,11 @@ export default function Menu({ className }: MenuModel) {
         <FiMenu size={30} onClick={toggleDrawer} />
         <Drawer isOpen={isOpen} onSetIsOpen={toggleDrawer}>
           <div className="flex flex-col items-center justify-center text-center">
-            <FiX size={30} onClick={toggleDrawer} className={'m-4 self-end'} />
+            <FiX
+              size={30}
+              onClick={toggleDrawer}
+              className={'m-4 self-end text-white'}
+            />
             <ul className="flex flex-col gap-6">
               <MenuItems />
               <CallToAction link="/area-do-cliente" />

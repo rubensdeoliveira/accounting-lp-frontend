@@ -8,7 +8,7 @@ export function Button({ label, link, className, ...rest }: ButtonModel) {
     <Link href={link}>
       <button
         {...rest}
-        className={`rounded-lg bg-red500 px-10 py-[0.9375rem] dark:bg-black lg:py-[1.09rem] ${className}`}
+        className={`flex max-h-12 items-center justify-center rounded-lg bg-red900 px-10 py-4 text-white dark:bg-red500 md:max-h-[3.25rem] lg:max-h-14 ${className}`}
       >
         <span className="text-sm font-medium leading-[1.3] lg:text-base">
           {label}
