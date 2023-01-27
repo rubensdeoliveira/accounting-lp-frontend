@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50
+      dark:bg-[#181828]
+      text-gray-900
+      dark:text-white
+      transition-colors
+      font-dmSans;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply bg-red900
+    dark:bg-red500
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-track{
+  background: theme('colors.gray.500');
+}
+body::-webkit-scrollbar-thumb{
+  /* background-color: theme('colors.red500'); */
+  border-radius: 20px;
+}

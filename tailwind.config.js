@@ -14,8 +14,8 @@ module.exports = {
 
       },
       fontFamily: {
-        raleway: 'var(--font-raleway)',
-        dmSans: 'var(--font-dmSans)',
+        raleway: 'Raleway',
+        dmSans: 'DM Sans',
       },
       letterSpacing: {
         'default': '-0.03em !important'
