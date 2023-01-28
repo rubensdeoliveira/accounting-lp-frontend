@@ -1,5 +1,30 @@
 # Melhorias
 
 - [ ] Adicionar numero maximo de linhas nos textos
-- [ ] Adicionar cores no light mode
+- [x] Adicionar cores no light mode
 - [ ] Adicionar otimizações de SEO
+- [x] Login (server)
+- [ ] Login (client)
+- [ ] Adicionar permanecer logado com refresh token (client)
+- [ ] Seed de usuário admin (server)
+- [ ] Recuperar senha (server)
+- [ ] Recuperar senha (client)
+- [ ] Alterar perfil (server)
+- [ ] Alterar perfil (client)
+- [ ] Adicionar cliente do admin (server)
+- [ ] Adicionar cliente do admin (client)
+- [ ] Alterar cliente do admin (server)
+- [ ] Alterar cliente do admin (client)
+- [ ] Excluir cliente do admin (server)
+- [ ] Excluir cliente do admin (client)
+- [ ] Listar clientes do admin (server)
+- [ ] Listar clientes do admin (client)
+- [ ] Adicionar envio de arquivo do admin (server)
+- [ ] Adicionar envio de arquivo do admin (client)
+- [ ] Adicionar leitura de somente arquivos do cliente por parte do cliente (server)
+- [ ] Adicionar leitura de somente arquivos do cliente por parte do cliente (client)
+- [ ] Criar tela de dashboard de admin (client)
+- [ ] Criar tela de dashboard de cliente (client)
+- [ ] Criar header diferente para usuario logado e nao logado (client)
+- [ ] Criar footer diferente para usuario logado e nao logado (client)
+- [ ] Conferir se todas as fontes estāo com a familia certa aplicada

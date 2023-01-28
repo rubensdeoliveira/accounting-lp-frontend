@@ -4,22 +4,26 @@ import { container } from 'tsyringe'
 import { createTRPCRouter, publicProcedure } from '@/server/infra/trpc'
 import { CreateSessionUseCase } from '@/server/domain/use-cases'
 
-export const SessionInput = z.object({
+export const CreateSessionInput = z.object({
   email: z.string(),
   password: z.string(),
 })
 
 export const sessionsRouter = createTRPCRouter({
-  create: publicProcedure.input(SessionInput).mutation(async ({ input }) => {
-    const { email, password } = input
+  create: publicProcedure
+    .input(CreateSessionInput)
+    .mutation(async ({ input }) => {
+      const { email, password } = input
 
-    const createSessionUseCase = container.resolve(CreateSessionUseCase)
+      const createSessionUseCase = container.resolve(CreateSessionUseCase)
 
-    const { user } = await createSessionUseCase.create({
-      email,
-      password,
-    })
+      const createdSession = await createSessionUseCase.create({
+        email,
+        password,
+      })
 
-    return user
-  }),
+      return createdSession
+    }),
 })
+
+export type SessionsRouter = typeof sessionsRouter

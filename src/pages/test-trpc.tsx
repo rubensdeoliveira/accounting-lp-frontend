@@ -6,8 +6,8 @@ export default function IndexPage() {
 
   useEffect(() => {
     const result = mutation.mutate({
-      email: 'rubensojunior@gmail.com',
-      password: 'te',
+      email: 'rubensojunior6@gmail.com',
+      password: '123456',
     })
     console.log(result)
   }, [])

@@ -1,9 +1,21 @@
-import { Footer, Header } from '@/client/application/components'
+import { Footer, Header, Input } from '@/client/application/components'
 import { normalizeData } from '@/client/application/helpers'
 import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { client } from '@/client/infra/graphql/common/client'
 import { GetStaticProps } from 'next'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
+import { FormButton } from '@/client/application/components/form-button'
+import { useForm } from 'react-hook-form'
+import { useCallback } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import {
+  CreateSessionInput,
+  SessionsRouter,
+} from '@/server/application/routers'
+import { inferRouterInputs } from '@trpc/server'
+
+type SessionsRouterInput = inferRouterInputs<SessionsRouter>['create']
 
 export const getStaticProps: GetStaticProps = async () => {
   const sharedResponse = await client.request(getSharedQuery)
@@ -15,47 +27,45 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function ClientArea({ footer, header }: SharedQueryModel) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SessionsRouterInput>({
+    resolver: zodResolver(CreateSessionInput),
+  })
+
+  const handleSubmitForm = useCallback((data: SessionsRouterInput) => {
+    console.log(data)
+  }, [])
+
   return (
     <div className="flex min-h-[100vh] flex-col">
       <Header {...header} />
       <div className="flex flex-1 items-center justify-center py-16">
-        <form className="flex w-full max-w-[480px] flex-col">
-          <div className="mb-3">
-            <label
-              htmlFor="email"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-            >
-              E-mail
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-red900 focus:ring-red-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-red500 dark:focus:ring-red-500"
-              placeholder="Digite um e-mail válido"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label
-              htmlFor="password"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Senha
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-red900 focus:ring-red-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-red500 dark:focus:ring-red-500"
-              required
-              placeholder="Digite sua senha"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full self-end rounded-lg bg-red900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red500 dark:hover:bg-red-700 dark:focus:ring-red-800"
-          >
-            Entrar
-          </button>
+        <form
+          className="flex w-full max-w-[480px] flex-col"
+          onSubmit={handleSubmit(handleSubmitForm)}
+        >
+          <Input
+            label="E-mail"
+            name="email"
+            placeholder="Digite um e-mail válido"
+            type="email"
+            className="mb-3"
+            register={register}
+            errors={errors}
+          />
+          <Input
+            label="Senha"
+            name="password"
+            placeholder="Digite sua senha"
+            type="password"
+            className="mb-6"
+            register={register}
+            errors={errors}
+          />
+          <FormButton label="Entrar" />
         </form>
       </div>
       <Footer {...footer} />
