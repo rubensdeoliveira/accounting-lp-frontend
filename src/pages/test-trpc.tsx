@@ -1,16 +1,20 @@
 import { api } from '@/utils/api'
+import { useEffect } from 'react'
 
 export default function IndexPage() {
-  const { isLoading, error, data } = api.user.getAll.useQuery()
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
-  if (error) {
-    return <div>Erro</div>
-  }
+  const mutation = api.session.create.useMutation({})
+
+  useEffect(() => {
+    const result = mutation.mutate({
+      email: 'rubensojunior@gmail.com',
+      password: 'te',
+    })
+    console.log(result)
+  }, [])
+
   return (
     <div>
-      <p>{JSON.stringify(data)}</p>
+      <p>fsdfd</p>
     </div>
   )
 }
