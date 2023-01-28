@@ -8,14 +8,8 @@ import { FormButton } from '@/client/application/components/form-button'
 import { useForm } from 'react-hook-form'
 import { useCallback } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import {
-  CreateSessionInput,
-  SessionsRouter,
-} from '@/server/application/routers'
-import { inferRouterInputs } from '@trpc/server'
-
-type SessionsRouterInput = inferRouterInputs<SessionsRouter>['create']
+import { CreateSessionSchema, CreateSessionDTO } from '@/shared/schemas'
+import { api } from '@/shared/utils'
 
 export const getStaticProps: GetStaticProps = async () => {
   const sharedResponse = await client.request(getSharedQuery)
@@ -31,13 +25,22 @@ export default function ClientArea({ footer, header }: SharedQueryModel) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SessionsRouterInput>({
-    resolver: zodResolver(CreateSessionInput),
+  } = useForm<CreateSessionDTO>({
+    resolver: zodResolver(CreateSessionSchema),
   })
+  const mutation = api.session.create.useMutation({})
 
-  const handleSubmitForm = useCallback((data: SessionsRouterInput) => {
-    console.log(data)
-  }, [])
+  const handleSubmitForm = useCallback(
+    ({ email, password }: CreateSessionDTO) => {
+      const result = mutation.mutate({
+        email,
+        password,
+      })
+
+      console.log(result)
+    },
+    [],
+  )
 
   return (
     <div className="flex min-h-[100vh] flex-col">

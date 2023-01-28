@@ -1,7 +1,5 @@
-import { z } from 'zod'
 import { User } from '@prisma/client'
-
-import { CreateSessionInput } from '@/server/application/routers'
+import { CreateSessionDTO } from '@/shared/schemas'
 
 export interface CreateSessionUseCaseContract {
   create: (
@@ -10,7 +8,7 @@ export interface CreateSessionUseCaseContract {
 }
 
 export namespace CreateSessionUseCaseContract {
-  export type Input = z.infer<typeof CreateSessionInput>
+  export type Input = CreateSessionDTO
   export type Output = {
     user: Omit<User, 'password'>
     access_token: string

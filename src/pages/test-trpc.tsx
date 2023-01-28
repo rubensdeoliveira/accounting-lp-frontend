@@ -1,5 +1,6 @@
-import { api } from '@/utils/api'
 import { useEffect } from 'react'
+
+import { api } from '@/shared/utils'
 
 export default function IndexPage() {
   const mutation = api.session.create.useMutation({})

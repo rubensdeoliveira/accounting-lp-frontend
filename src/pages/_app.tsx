@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app'
 
 import '@/client/application/styles/global.css'
 import { Providers } from '@/client/application/providers'
-import { api } from '@/utils/api'
+import { api } from '@/shared/utils'
 
 function App({ Component, pageProps }: AppProps) {
   return (
