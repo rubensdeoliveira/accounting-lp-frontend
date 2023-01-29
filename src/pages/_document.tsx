@@ -1,10 +1,8 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
-import { dmSans, raleway } from '@/client/application/fonts'
-
 export default function Document() {
   return (
-    <Html lang="en" className={`${dmSans.variable} ${raleway.variable}`}>
+    <Html lang="en">
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

@@ -8,15 +8,8 @@ export const sessionsRouter = createTRPCRouter({
   create: publicProcedure
     .input(CreateSessionSchema)
     .mutation(async ({ input }) => {
-      const { email, password } = input
-
       const createSessionUseCase = container.resolve(CreateSessionUseCase)
-
-      const createdSession = await createSessionUseCase.create({
-        email,
-        password,
-      })
-
+      const createdSession = await createSessionUseCase.create(input)
       return createdSession
     }),
 })

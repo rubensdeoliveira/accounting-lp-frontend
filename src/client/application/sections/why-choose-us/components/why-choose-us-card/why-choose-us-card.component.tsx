@@ -13,7 +13,7 @@ export function WhyChooseUsCard({
 }: WhyChooseUsCardModel) {
   return (
     <div className="flex w-full max-w-[386.66px] flex-col bg-gray900 p-8 dark:bg-gray500 md:p-9 lg:p-10">
-      <ArrowRightIcon />
+      <ArrowRightIcon className="mb-16 h-12 w-12" />
       <h1 className="mb-6 font-raleway text-xl font-medium leading-[1.2] tracking-default text-white md:text-[1.375rem] md:font-semibold lg:text-2xl">
         {title}
       </h1>

@@ -1,4 +1,4 @@
 export type ToastModel = {
-  type: 'success' | 'danger' | 'warning'
+  type: 'success' | 'danger'
   message: string
 }
