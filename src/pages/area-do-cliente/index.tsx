@@ -1,4 +1,4 @@
-import { Footer, Header, Input } from '@/client/application/components'
+import { Footer, Header, Input, Toast } from '@/client/application/components'
 import { normalizeData } from '@/client/application/helpers'
 import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { client } from '@/client/infra/graphql/common/client'
@@ -10,6 +10,7 @@ import { useCallback } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CreateSessionSchema, CreateSessionDTO } from '@/shared/schemas'
 import { api } from '@/shared/utils'
+import { useRouter } from 'next/navigation'
 
 export const getStaticProps: GetStaticProps = async () => {
   const sharedResponse = await client.request(getSharedQuery)
@@ -28,26 +29,22 @@ export default function ClientArea({ footer, header }: SharedQueryModel) {
   } = useForm<CreateSessionDTO>({
     resolver: zodResolver(CreateSessionSchema),
   })
-  const mutation = api.session.create.useMutation({})
-
-  const handleSubmitForm = useCallback(
-    ({ email, password }: CreateSessionDTO) => {
-      const result = mutation.mutate({
-        email,
-        password,
-      })
-
-      console.log(result)
+  const { push } = useRouter()
+  const { mutate, error } = api.session.create.useMutation({
+    onSuccess: () => {
+      push('/area-do-cliente/dashboard')
     },
-    [],
-  )
+  })
+  const handleSubmitForm = useCallback((data: CreateSessionDTO) => {
+    mutate(data)
+  }, [])
 
   return (
     <div className="flex min-h-[100vh] flex-col">
       <Header {...header} />
       <div className="flex flex-1 items-center justify-center py-16">
         <form
-          className="flex w-full max-w-[480px] flex-col"
+          className="flex w-full max-w-[340px] flex-col"
           onSubmit={handleSubmit(handleSubmitForm)}
         >
           <Input
@@ -71,6 +68,7 @@ export default function ClientArea({ footer, header }: SharedQueryModel) {
           <FormButton label="Entrar" />
         </form>
       </div>
+      {error && <Toast type="danger" message={error.message} />}
       <Footer {...footer} />
     </div>
   )

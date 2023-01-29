@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useMemo } from 'react'
-import { FiPhone } from 'react-icons/fi'
+import { BeakerIcon } from '@heroicons/react/24/solid'
 
 import { FooterModel } from './models'
 
@@ -16,7 +16,7 @@ export function Footer({
       iconButtonLinks.length &&
       iconButtonLinks.map(iconButtonLink => (
         <Link href={iconButtonLink.link} key={iconButtonLink.id}>
-          <FiPhone size={24} />
+          <BeakerIcon className="h-6 w-6 flex-shrink-0" />
         </Link>
       )),
     [iconButtonLinks],
@@ -28,7 +28,7 @@ export function Footer({
       contactLinks.map(contactLink => (
         <Link href={contactLink.link} key={contactLink.id}>
           <div className="flex items-center gap-4">
-            <FiPhone size={24} className="flex-shrink-0" />
+            <BeakerIcon className="h-6 w-6 flex-shrink-0" />
             <span className="text-sm leading-[1.2] text-black/70 dark:text-white/70 md:text-[0.9375rem] lg:text-base">
               {contactLink.text}
             </span>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { FiMenu, FiX } from 'react-icons/fi'
+import { XCircleIcon, HomeIcon } from '@heroicons/react/24/solid'
 import { CallToAction } from '@/client/application/components/header/components'
 import { Drawer } from './components/drawer'
 import { MenuItems } from './components'
@@ -22,14 +22,10 @@ export default function Menu({ className }: MenuModel) {
     <div className={className}>
       <div className="flex items-center gap-6 md:hidden">
         <DarkModeSwitcher />
-        <FiMenu size={30} onClick={toggleDrawer} />
+        <HomeIcon onClick={toggleDrawer} />
         <Drawer isOpen={isOpen} onSetIsOpen={toggleDrawer}>
           <div className="flex flex-col items-center justify-center text-center">
-            <FiX
-              size={30}
-              onClick={toggleDrawer}
-              className={'m-4 self-end text-white'}
-            />
+            <XCircleIcon onClick={toggleDrawer} />
             <ul className="flex flex-col gap-6">
               <MenuItems />
               <CallToAction link="/area-do-cliente" />
