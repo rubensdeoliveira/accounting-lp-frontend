@@ -7,7 +7,6 @@ import { env } from '@/server/infra/env/server.mjs'
 import { createTRPCContext } from '@/server/infra/trpc/trpc'
 import { appRouter } from '@/server/infra/trpc/root'
 
-// export API handler
 export default createNextApiHandler({
   router: appRouter,
   createContext: createTRPCContext,
