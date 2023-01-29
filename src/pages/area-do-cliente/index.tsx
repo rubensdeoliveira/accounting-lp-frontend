@@ -1,3 +1,11 @@
+import { useForm } from 'react-hook-form'
+import { useCallback } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { signIn } from 'next-auth/react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+
+import { CreateSessionSchema, CreateSessionDTO } from '@/shared/schemas'
+import { api } from '@/shared/utils'
 import { Footer, Header, Input, Toast } from '@/client/application/components'
 import { normalizeData } from '@/client/application/helpers'
 import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
@@ -5,12 +13,6 @@ import { client } from '@/client/infra/graphql/common/client'
 import { GetStaticProps } from 'next'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
 import { FormButton } from '@/client/application/components/form-button'
-import { useForm } from 'react-hook-form'
-import { useCallback } from 'react'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { CreateSessionSchema, CreateSessionDTO } from '@/shared/schemas'
-import { api } from '@/shared/utils'
-import { useRouter } from 'next/navigation'
 
 export const getStaticProps: GetStaticProps = async () => {
   const sharedResponse = await client.request(getSharedQuery)
@@ -30,6 +32,8 @@ export default function ClientArea({ footer, header }: SharedQueryModel) {
     resolver: zodResolver(CreateSessionSchema),
   })
   const { push } = useRouter()
+  const searchParams = useSearchParams()
+  const errorFromAuthentication = searchParams.get('error')
   const { mutate, error } = api.session.create.useMutation({
     onSuccess: () => {
       push('/area-do-cliente/dashboard')
@@ -66,9 +70,19 @@ export default function ClientArea({ footer, header }: SharedQueryModel) {
             errors={errors}
           />
           <FormButton label="Entrar" />
+          <FormButton
+            label="Logar com Google"
+            onClick={async () => await signIn('google')}
+          />
         </form>
       </div>
       {error && <Toast type="danger" message={error.message} />}
+      {errorFromAuthentication && (
+        <Toast
+          type="danger"
+          message="Você não está cadastrado na plataforma, solicite acesso ao administrador"
+        />
+      )}
       <Footer {...footer} />
     </div>
   )

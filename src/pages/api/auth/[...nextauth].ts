@@ -1,5 +1,5 @@
-import NextAuth, { type NextAuthOptions } from 'next-auth'
-import DiscordProvider from 'next-auth/providers/discord'
+import NextAuth, { NextAuthOptions } from 'next-auth'
+import GoogleProvider from 'next-auth/providers/google'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 
 import { env } from '@/server/infra/env/server.mjs'
@@ -13,12 +13,29 @@ export const authOptions: NextAuthOptions = {
       }
       return session
     },
+    async signIn({ user }) {
+      const email = user.email
+      if (email) {
+        const findRegisteredUser = await prisma.user.findUnique({
+          where: {
+            email,
+          },
+        })
+        if (findRegisteredUser) {
+          return true
+        } else {
+          return '/area-do-cliente?error=notRegisteredUser'
+        }
+      }
+
+      return false
+    },
   },
   adapter: PrismaAdapter(prisma),
   providers: [
-    DiscordProvider({
-      clientId: env.DISCORD_CLIENT_ID,
-      clientSecret: env.DISCORD_CLIENT_SECRET,
+    GoogleProvider({
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
   ],
 }
