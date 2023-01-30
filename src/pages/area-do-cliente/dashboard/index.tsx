@@ -4,6 +4,7 @@ import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { client } from '@/client/infra/graphql/common/client'
 import { GetStaticProps } from 'next'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
+import { signOut, useSession } from 'next-auth/react'
 
 export const getStaticProps: GetStaticProps = async () => {
   const sharedResponse = await client.request(getSharedQuery)
@@ -21,6 +22,11 @@ export default function ClientAreaDashboard({
   return (
     <>
       <Header {...header} />
+      <button
+        onClick={async () => await signOut({ callbackUrl: '/area-do-cliente' })}
+      >
+        Sair
+      </button>
       <Footer {...footer} />
     </>
   )

@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { useCallback } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { signIn } from 'next-auth/react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { getSession, signIn, useSession } from 'next-auth/react'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import { CreateSessionSchema, CreateSessionDTO } from '@/shared/schemas'
 import { api } from '@/shared/utils'
@@ -10,16 +10,28 @@ import { Footer, Header, Input, Toast } from '@/client/application/components'
 import { normalizeData } from '@/client/application/helpers'
 import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { client } from '@/client/infra/graphql/common/client'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
 import { FormButton } from '@/client/application/components/form-button'
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext,
+) => {
+  const session = await getSession(context)
+
+  if (session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/area-do-cliente/dashboard',
+      },
+    }
+  }
+
   const sharedResponse = await client.request(getSharedQuery)
   const { shared } = normalizeData(sharedResponse)
   return {
     props: { ...shared },
-    revalidate: 60 * 10,
   }
 }
 
@@ -39,9 +51,12 @@ export default function ClientArea({ footer, header }: SharedQueryModel) {
       push('/area-do-cliente/dashboard')
     },
   })
-  const handleSubmitForm = useCallback((data: CreateSessionDTO) => {
-    mutate(data)
+  const handleSubmitForm = useCallback(async (data: CreateSessionDTO) => {
+    await signIn('email', { email: data.email })
   }, [])
+
+  const teste = useSession()
+  console.log(teste)
 
   return (
     <div className="flex min-h-[100vh] flex-col">
@@ -73,6 +88,7 @@ export default function ClientArea({ footer, header }: SharedQueryModel) {
           <FormButton
             label="Logar com Google"
             onClick={async () => await signIn('google')}
+            type="button"
           />
         </form>
       </div>
