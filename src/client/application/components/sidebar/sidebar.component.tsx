@@ -1,8 +1,52 @@
 import { signOut, useSession } from 'next-auth/react'
+import { useCallback, useMemo } from 'react'
+import { sidebarMainItems, sidebarSecondaryItems } from './constants'
 import { SidebarModel } from './models'
+import { HomeIcon } from '@heroicons/react/24/solid'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 export function SideBar({ children }: SidebarModel) {
   const { data } = useSession()
+
+  const renderName = useMemo(() => {
+    const splittedName = data?.user?.name?.split(' ')
+    if (splittedName && splittedName.length > 2) {
+      return `${splittedName[0]} ${splittedName[1]}`
+    }
+    return data?.user?.name
+  }, [data?.user?.name])
+
+  const pathname = usePathname()
+
+  const renderSidebarItem = useCallback(
+    (
+      label: string,
+      Icon: React.ForwardRefExoticComponent<
+        React.SVGProps<SVGSVGElement> & {
+          title?: string | undefined
+          titleId?: string | undefined
+        }
+      >,
+      path: string,
+    ) => (
+      <li
+        className={`${
+          pathname?.includes(path) ? 'dark:bg-gray-800 dark:text-gray-50' : ''
+        } `}
+        key={label}
+      >
+        <Link
+          href={path}
+          className="flex items-center space-x-3 rounded-md p-2"
+        >
+          <Icon className="h-5 w-5" />
+          <span>{label}</span>
+        </Link>
+      </li>
+    ),
+    [pathname],
+  )
 
   return (
     <div className="drawer-mobile drawer">
@@ -30,7 +74,7 @@ export function SideBar({ children }: SidebarModel) {
               </div>
             )}
             <div>
-              <h2 className="text-lg font-semibold">{data?.user?.name}</h2>
+              <h2 className="text-lg font-semibold">{renderName}</h2>
               <span className="flex items-center space-x-1">
                 <a
                   rel="noopener noreferrer"
@@ -44,40 +88,22 @@ export function SideBar({ children }: SidebarModel) {
           </div>
           <div className="divide-y divide-gray-700">
             <ul className="space-y-1 pt-2 pb-4 text-sm">
-              <li className="dark:bg-gray-800 dark:text-gray-50">
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="flex items-center space-x-3 rounded-md p-2"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    className="h-5 w-5 fill-current dark:text-gray-400"
-                  >
-                    <path d="M68.983,382.642l171.35,98.928a32.082,32.082,0,0,0,32,0l171.352-98.929a32.093,32.093,0,0,0,16-27.713V157.071a32.092,32.092,0,0,0-16-27.713L272.334,30.429a32.086,32.086,0,0,0-32,0L68.983,129.358a32.09,32.09,0,0,0-16,27.713V354.929A32.09,32.09,0,0,0,68.983,382.642ZM272.333,67.38l155.351,89.691V334.449L272.333,246.642ZM256.282,274.327l157.155,88.828-157.1,90.7L99.179,363.125ZM84.983,157.071,240.333,67.38v179.2L84.983,334.39Z"></path>
-                  </svg>
-                  <span>Dashboard</span>
-                </a>
-              </li>
+              {sidebarMainItems.map(({ Icon, label, path }) =>
+                renderSidebarItem(label, Icon, path),
+              )}
             </ul>
             <ul className="space-y-1 pt-4 pb-2 text-sm">
+              {sidebarSecondaryItems.map(({ Icon, label, path }) =>
+                renderSidebarItem(label, Icon, path),
+              )}
               <li>
-                <a
-                  rel="noopener noreferrer"
+                <button
+                  className="flex w-full items-center space-x-3 rounded-md p-2"
                   onClick={async () => await signOut()}
-                  className="flex cursor-pointer items-center space-x-3 rounded-md p-2"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    className="h-5 w-5 fill-current dark:text-gray-400"
-                  >
-                    <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
-                    <rect width="32" height="64" x="256" y="232"></rect>
-                  </svg>
-                  <span>Logout</span>
-                </a>
+                  <HomeIcon className="h-5 w-5" />
+                  <span>Sair</span>
+                </button>
               </li>
             </ul>
           </div>

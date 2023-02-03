@@ -6,12 +6,15 @@ import * as bcrypt from 'bcrypt'
 
 import { env } from '@/server/infra/env/server.mjs'
 import { prisma } from '@/server/infra/database'
+import { Session } from '@prisma/client'
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user }) {
+      console.log(session, user)
       if (session.user) {
         session.user.id = user.id
+        session.user.role = user.role
       }
       return session
     },

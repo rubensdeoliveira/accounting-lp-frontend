@@ -15,7 +15,7 @@ export const getServerSideProps = withSSRAuthenticated(async () => {
   }
 })
 
-export default function ClientAreaDashboard({
+export default function ClientAreaAllowedUsers({
   footer,
   header,
 }: SharedQueryModel) {
