@@ -1,4 +1,5 @@
 export * from './button'
+export * from './dashboard-container'
 export * from './footer'
 export * from './header'
 export * from './input'

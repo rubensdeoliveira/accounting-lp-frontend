@@ -14,7 +14,10 @@ export function Header({ logo, logoDark }: HeaderModel) {
   const { status } = useSession()
 
   const handleAuthenticatedHeader = useMemo(
-    () => status === 'authenticated' && <AuthenticatedMenu />,
+    () =>
+      status === 'authenticated' && (
+        <AuthenticatedMenu logo={logo} logoDark={logoDark} />
+      ),
     [status],
   )
 

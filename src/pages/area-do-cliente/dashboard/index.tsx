@@ -1,4 +1,4 @@
-import { Footer, Header, SideBar } from '@/client/application/components'
+import { DashboardContainer } from '@/client/application/components'
 import {
   normalizeData,
   withSSRAuthenticated,
@@ -19,12 +19,5 @@ export default function ClientAreaDashboard({
   footer,
   header,
 }: SharedQueryModel) {
-  return (
-    // <div className="flex min-h-[100vh] flex-col justify-between">
-    //   <Header {...header} />
-    <SideBar />
-    //   <p>teste</p>
-    //   <Footer {...footer} />
-    // </div>
-  )
+  return <DashboardContainer header={header}>teste</DashboardContainer>
 }

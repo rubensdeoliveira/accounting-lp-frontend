@@ -12,7 +12,9 @@ export function Providers({ children }: ProvidersModel) {
     <ThemeProvider attribute="class">
       <div
         className={`mx-auto flex w-full ${
-          status === 'unauthenticated' ? 'max-w-[1200px] px-5 xl:px-0' : ''
+          status === 'unauthenticated'
+            ? 'max-w-[1200px] px-5 xl:px-0'
+            : 'h-screen'
         } flex-col`}
       >
         {children}
