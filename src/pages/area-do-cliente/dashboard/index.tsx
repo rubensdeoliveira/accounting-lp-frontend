@@ -1,33 +1,30 @@
-import { Footer, Header } from '@/client/application/components'
-import { normalizeData } from '@/client/application/helpers'
+import { Footer, Header, SideBar } from '@/client/application/components'
+import {
+  normalizeData,
+  withSSRAuthenticated,
+} from '@/client/application/helpers'
 import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { client } from '@/client/infra/graphql/common/client'
-import { GetStaticProps } from 'next'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
-import { signOut, useSession } from 'next-auth/react'
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps = withSSRAuthenticated(async () => {
   const sharedResponse = await client.request(getSharedQuery)
   const { shared } = normalizeData(sharedResponse)
   return {
     props: { ...shared },
-    revalidate: 60 * 10,
   }
-}
+})
 
 export default function ClientAreaDashboard({
   footer,
   header,
 }: SharedQueryModel) {
   return (
-    <>
-      <Header {...header} />
-      <button
-        onClick={async () => await signOut({ callbackUrl: '/area-do-cliente' })}
-      >
-        Sair
-      </button>
-      <Footer {...footer} />
-    </>
+    // <div className="flex min-h-[100vh] flex-col justify-between">
+    //   <Header {...header} />
+    <SideBar />
+    //   <p>teste</p>
+    //   <Footer {...footer} />
+    // </div>
   )
 }

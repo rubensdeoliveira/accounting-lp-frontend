@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./node_modules/flowbite-react/**/*.js",
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
@@ -23,8 +22,6 @@ module.exports = {
       }
     },
   },
-  plugins: [
-    require("flowbite/plugin")
-  ],
+  plugins: [require("daisyui")],
   darkMode: 'class'
 }

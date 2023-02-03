@@ -7,8 +7,6 @@ import * as bcrypt from 'bcrypt'
 import { env } from '@/server/infra/env/server.mjs'
 import { prisma } from '@/server/infra/database'
 
-console.log(env)
-
 export const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user }) {

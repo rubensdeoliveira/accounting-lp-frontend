@@ -59,3 +59,8 @@ model Document {
   created_at DateTime @default(now())
   document_url String
 }
+
+model AllowedUser {
+  id            String  @default(uuid()) @id
+  email         String?   @unique
+}

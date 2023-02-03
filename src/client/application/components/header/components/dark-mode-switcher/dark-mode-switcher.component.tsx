@@ -1,11 +1,9 @@
-'use client'
-
 import { useCallback } from 'react'
 import { useTheme } from 'next-themes'
 
 import { DarkModeSwitcherModel } from './models'
 
-export default function DarkModeSwitcher({ className }: DarkModeSwitcherModel) {
+export function DarkModeSwitcher({ className }: DarkModeSwitcherModel) {
   const { theme, setTheme } = useTheme()
 
   const toggleTheme = useCallback(() => {

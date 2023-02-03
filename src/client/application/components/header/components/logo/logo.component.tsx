@@ -1,5 +1,3 @@
-'use client'
-
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 import { LogoModel } from './models'
 
-export default function Logo({ logo, logoDark }: LogoModel) {
+export function Logo({ logo, logoDark }: LogoModel) {
   const [mounted, setMounted] = useState(false)
   const { theme } = useTheme()
 
@@ -19,8 +17,8 @@ export default function Logo({ logo, logoDark }: LogoModel) {
         <Image
           alt="Logo da JR Contabilidade"
           src={theme === 'light' ? logo.url : logoDark.url}
-          width={96}
-          height={40}
+          width={86}
+          height={36}
         />
       )}
     </Link>

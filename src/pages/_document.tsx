@@ -15,7 +15,7 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className="mx-auto flex w-full max-w-[1200px] flex-col px-5 xl:px-0">
+      <body>
         <Main />
         <NextScript />
       </body>

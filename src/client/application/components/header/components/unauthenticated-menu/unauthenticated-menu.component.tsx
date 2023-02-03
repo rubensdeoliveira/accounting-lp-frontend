@@ -1,17 +1,17 @@
-'use client'
-
 import { useCallback, useState } from 'react'
 import { XCircleIcon, HomeIcon } from '@heroicons/react/24/solid'
-import { CallToAction } from '@/client/application/components/header/components'
+import {
+  CallToAction,
+  DarkModeSwitcher,
+} from '@/client/application/components/header/components'
 import { Drawer } from './components/drawer'
 import { MenuItems } from './components'
-import DarkModeSwitcher from '../dark-mode-switcher/dark-mode-switcher.component'
 
 type MenuModel = {
   className?: string
 }
 
-export default function Menu({ className }: MenuModel) {
+export function UnauthenticatedMenu({ className }: MenuModel) {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleDrawer = useCallback(() => {
