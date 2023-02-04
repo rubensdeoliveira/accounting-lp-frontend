@@ -13,23 +13,22 @@ export function Input({
   ...rest
 }: InputModel) {
   return (
-    <div className={className}>
-      <label
-        htmlFor={name}
-        className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-      >
-        {label}
+    <div className="form-control w-full max-w-xs">
+      <label className="label">
+        <span className="label-text">{label}</span>
       </label>
       <input
         {...rest}
         {...register(name)}
-        name={name}
         type={type}
-        id={name}
-        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-red900 focus:ring-red-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-red500 dark:focus:ring-red-500"
         placeholder={placeholder}
+        className="input-bordered input w-full max-w-xs"
       />
-      {errors?.[name]?.message && <>{errors[name].message}</>}
+      {errors?.[name]?.message && (
+        <label className="label">
+          <span className="label-text-alt">{errors[name].message}</span>
+        </label>
+      )}
     </div>
   )
 }

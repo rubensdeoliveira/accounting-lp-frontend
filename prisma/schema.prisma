@@ -6,6 +6,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -39,9 +40,10 @@ model User {
   emailVerified DateTime?
   image         String?
   role          String?
+  company_id    String?
+  company       Company?  @relation(fields: [company_id], references: [id])
   accounts      Account[]
   sessions      Session[]
-  documents     Document[]
 }
 
 model VerificationToken {
@@ -53,15 +55,32 @@ model VerificationToken {
 }
 
 model Document {
-  id String  @default(uuid()) @id
-  user User @relation(fields: [user_id], references: [id])
-  user_id  String
-  reference_date  DateTime
-  created_at DateTime @default(now())
-  document_url String
+  id             String   @id @default(uuid())
+  reference_date DateTime
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+  document_url   String
+  company        Company  @relation(fields: [company_id], references: [id])
+  company_id     String
 }
 
 model AllowedUser {
-  id            String  @default(uuid()) @id
-  email         String?   @unique
+  id    String @id @default(uuid())
+  email String @unique
+}
+
+model Company {
+  id           String     @id @default(uuid())
+  name         String     @unique
+  cnpj         String?
+  ie           String?
+  phone        String?
+  cep          String?
+  street       String?
+  neighborhood String?
+  number       String?
+  city         String?
+  state        String?
+  documents    Document[]
+  users        User[]
 }

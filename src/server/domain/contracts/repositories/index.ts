@@ -1,2 +1,2 @@
-export * from './user-tokens'
+export * from './companies'
 export * from './users'

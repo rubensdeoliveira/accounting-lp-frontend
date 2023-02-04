@@ -13,6 +13,7 @@ type SidebarItemType = {
 
 export const sidebarMainItems: SidebarItemType[] = [
   { label: 'Dashboard', Icon: HomeIcon, path: '/area-do-cliente/dashboard' },
+  { label: 'Empresas', Icon: HomeIcon, path: '/area-do-cliente/empresas' },
 ]
 
 export const sidebarSecondaryItems: SidebarItemType[] = [

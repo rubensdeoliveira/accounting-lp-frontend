@@ -1,5 +1,5 @@
 import { signOut, useSession } from 'next-auth/react'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { sidebarMainItems, sidebarSecondaryItems } from './constants'
 import { SidebarModel } from './models'
 import { HomeIcon } from '@heroicons/react/24/solid'
@@ -8,6 +8,7 @@ import Link from 'next/link'
 
 export function SideBar({ children }: SidebarModel) {
   const { data } = useSession()
+  const [isImageError, setIsImageError] = useState<boolean>(false)
 
   const renderName = useMemo(() => {
     const splittedName = data?.user?.name?.split(' ')
@@ -51,18 +52,17 @@ export function SideBar({ children }: SidebarModel) {
   return (
     <div className="drawer-mobile drawer">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
-        {children}
-      </div>
+      <div className="drawer-content flex flex-col gap-4 p-8">{children}</div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <div className="h-full w-60 space-y-2 p-3 dark:bg-gray-900 dark:text-gray-100">
           <div className="flex items-center space-x-4 p-2">
-            {data?.user?.image ? (
+            {data?.user?.image && !isImageError ? (
               <img
                 src={data?.user?.image}
                 alt={data?.user?.name ?? 'Foto do usuaário'}
                 className="h-12 w-12 rounded-full dark:bg-gray-500"
+                onError={() => setIsImageError(true)}
               />
             ) : (
               <div className="placeholder avatar">

@@ -3,11 +3,11 @@ import { container } from 'tsyringe'
 import './gateways'
 import {
   UsersRepository,
-  UserTokensRepository,
+  CompaniesRepository,
 } from '@/server/infra/repositories'
 import {
   UsersRepositoryContract,
-  UserTokensRepositoryContract,
+  CompaniesRepositoryContract,
 } from '@/server/domain/contracts'
 
 container.registerSingleton<UsersRepositoryContract>(
@@ -15,7 +15,7 @@ container.registerSingleton<UsersRepositoryContract>(
   UsersRepository,
 )
 
-container.registerSingleton<UserTokensRepositoryContract>(
-  UserTokensRepositoryContract,
-  UserTokensRepository,
+container.registerSingleton<CompaniesRepositoryContract>(
+  CompaniesRepositoryContract,
+  CompaniesRepository,
 )
