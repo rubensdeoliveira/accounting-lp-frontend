@@ -7,10 +7,8 @@ import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { client } from '@/client/infra/graphql/common/client'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
 import { api } from '@/shared/utils'
-import { ListCompaniesUseCaseContract } from '@/server/domain/contracts'
 import { useAtom } from 'jotai'
 import { pageAtom } from '@/client/application/atoms'
-import { atomWithHash } from 'jotai-location'
 
 export const getServerSideProps = withSSRAuthenticated(async () => {
   const sharedResponse = await client.request(getSharedQuery)
@@ -28,7 +26,7 @@ export default function ClientAreaCompanies({
 
   const { data, isError, isLoading } = api.company.list.useQuery({
     search: '',
-    page: page,
+    page,
   })
 
   return (

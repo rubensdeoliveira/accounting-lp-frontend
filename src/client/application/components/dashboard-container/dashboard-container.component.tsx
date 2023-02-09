@@ -1,6 +1,5 @@
-import { Footer } from '../footer'
-import { Header } from '../header'
-import { SideBar } from '../sidebar'
+import { Footer, Header } from '@/client/application/sections'
+import { SideBar } from '@/client/application/components'
 import { DashboardContainerModel } from './models'
 
 export function DashboardContainer({

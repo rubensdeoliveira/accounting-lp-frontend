@@ -1,6 +1,8 @@
 import {
   Button,
   DashboardContainer,
+  Form,
+  FormRow,
   Input,
   Table,
 } from '@/client/application/components'
@@ -55,15 +57,24 @@ export default function ClientAreaCompanies({
 
   return (
     <DashboardContainer header={header} footer={footer}>
-      <form onSubmit={handleSubmit(handleSubmitForm)}>
+      <Form onSubmit={handleSubmit(handleSubmitForm)}>
         <Input
           name="name"
           label="Nome da empresa"
           register={register}
           errors={errors}
         />
+        <FormRow>
+          <Input name="cnpj" label="CNPJ" register={register} errors={errors} />
+          <Input
+            name="ie"
+            label="Inscrição Estadual"
+            register={register}
+            errors={errors}
+          />
+        </FormRow>
         <Button label="Cadastrar" type="submit" />
-      </form>
+      </Form>
     </DashboardContainer>
   )
 }
