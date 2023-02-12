@@ -1,5 +1,9 @@
-import { Footer, Header, Main } from '@/client/application/components'
-import { WhyChooseUsSection } from '@/client/application/sections'
+import {
+  Footer,
+  Header,
+  WhyChooseUsSection,
+  Main,
+} from '@/client/application/sections'
 import { normalizeData, withSSRGuest } from '@/client/application/helpers'
 import { getOurServicesPageQuery } from '@/client/infra/graphql/our-services/queries'
 import { OurServicesQueryModel } from '@/client/infra/graphql/our-services/models'

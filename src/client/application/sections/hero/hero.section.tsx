@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { Button } from '@/client/application/components'
+import { Button } from '@rubensdeoliveira-ui/react'
 import { HeroSectionModel } from './models'
 
 export function HeroSection({
@@ -33,7 +33,7 @@ export function HeroSection({
           {description}
         </p>
         <div>
-          <Button label={button.label} link={button.link} />
+          <Button label={button.label} />
         </div>
       </div>
     </div>

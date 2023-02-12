@@ -2,7 +2,7 @@ import React from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
 
 import { WhyChooseUsCardModel } from './models'
-import { Button } from '@/client/application/components'
+import { Button } from '@rubensdeoliveira-ui/react'
 
 export function WhyChooseUsCard({
   buttonLink,
@@ -20,7 +20,7 @@ export function WhyChooseUsCard({
       <p className="mb-14 text-base leading-[1.6] tracking-default text-white/70 md:text-[1.0625rem] lg:text-lg">
         {description}
       </p>
-      <Button label={buttonText} link={buttonLink} buttonType="learnMore" />
+      <Button label={buttonText} buttonType="learnMore" />
     </div>
   )
 }

@@ -1,5 +1,4 @@
 export * from './authenticated-menu'
-export * from './call-to-action'
 export * from './dark-mode-switcher'
 export * from './logo'
 export * from './unauthenticated-menu'

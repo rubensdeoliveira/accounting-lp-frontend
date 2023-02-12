@@ -5,12 +5,12 @@ import { signIn } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
 
 import { CreateSessionSchema, CreateSessionDTO } from '@/shared/schemas'
-import { Footer, Header, Input, Toast } from '@/client/application/components'
 import { normalizeData, withSSRGuest } from '@/client/application/helpers'
 import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { client } from '@/client/infra/graphql/common/client'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
-import { FormButton } from '@/client/application/components/form-button'
+import { Footer, Header } from '@/client/application/sections'
+import { Button, Input, Toast } from '@rubensdeoliveira-ui/react'
 
 export const getServerSideProps = withSSRGuest(async () => {
   const sharedResponse = await client.request(getSharedQuery)
@@ -60,8 +60,8 @@ export default function ClientArea({ footer, header }: SharedQueryModel) {
             register={register}
             errors={errors}
           />
-          <FormButton label="Entrar" />
-          <FormButton
+          <Button label="Entrar" />
+          <Button
             label="Logar com Google"
             onClick={async () => await signIn('google')}
             type="button"

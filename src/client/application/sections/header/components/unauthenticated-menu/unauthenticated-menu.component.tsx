@@ -1,11 +1,10 @@
 import { useCallback, useState } from 'react'
 import { XCircleIcon, HomeIcon } from '@heroicons/react/24/solid'
-import {
-  CallToAction,
-  DarkModeSwitcher,
-} from '@/client/application/components/header/components'
+import { Button } from '@rubensdeoliveira-ui/react'
+
 import { Drawer } from './components/drawer'
 import { MenuItems } from './components'
+import { DarkModeSwitcher } from '../dark-mode-switcher'
 
 type MenuModel = {
   className?: string
@@ -28,7 +27,7 @@ export function UnauthenticatedMenu({ className }: MenuModel) {
             <XCircleIcon onClick={toggleDrawer} />
             <ul className="flex flex-col gap-6">
               <MenuItems />
-              <CallToAction link="/area-do-cliente" />
+              <Button label="Área do Cliente" />
             </ul>
           </div>
         </Drawer>

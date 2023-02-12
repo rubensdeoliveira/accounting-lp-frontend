@@ -1,4 +1,4 @@
-import { DashboardContainer, Table } from '@/client/application/components'
+import { DashboardContainer } from '@/client/application/components'
 import {
   normalizeData,
   withSSRAuthenticated,
@@ -9,6 +9,7 @@ import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
 import { api } from '@/shared/utils'
 import { useAtom } from 'jotai'
 import { pageAtom } from '@/client/application/atoms'
+import { Table } from '@rubensdeoliveira-ui/react'
 
 export const getServerSideProps = withSSRAuthenticated(async () => {
   const sharedResponse = await client.request(getSharedQuery)

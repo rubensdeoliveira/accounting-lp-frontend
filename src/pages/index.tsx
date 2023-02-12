@@ -1,8 +1,13 @@
 import { client } from '@/client/infra/graphql/common/client'
 import { getHomePageQuery } from '@/client/infra/graphql/home/queries'
 import { normalizeData, withSSRGuest } from '@/client/application/helpers'
-import { HeroSection, WhyChooseUsSection } from '@/client/application/sections'
-import { Footer, Header, Main } from '@/client/application/components'
+import {
+  HeroSection,
+  WhyChooseUsSection,
+  Footer,
+  Header,
+  Main,
+} from '@/client/application/sections'
 import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { HomeQueryModel } from '@/client/infra/graphql/home/models'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'

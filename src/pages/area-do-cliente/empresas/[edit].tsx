@@ -1,11 +1,4 @@
-import {
-  Button,
-  DashboardContainer,
-  Form,
-  FormRow,
-  Input,
-  Table,
-} from '@/client/application/components'
+import { DashboardContainer } from '@/client/application/components'
 import {
   normalizeData,
   withSSRAuthenticated,
@@ -19,6 +12,7 @@ import { CreateCompanyDTO, CreateCompanySchema } from '@/shared/schemas'
 import { api } from '@/shared/utils'
 import { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
+import { Button, Form, FormRow, Input } from '@rubensdeoliveira-ui/react'
 
 export const getServerSideProps = withSSRAuthenticated(async () => {
   const sharedResponse = await client.request(getSharedQuery)

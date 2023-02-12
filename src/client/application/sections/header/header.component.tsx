@@ -1,9 +1,9 @@
+import { Button } from '@rubensdeoliveira-ui/react'
 import { useSession } from 'next-auth/react'
 import { useMemo } from 'react'
 
 import {
   AuthenticatedMenu,
-  CallToAction,
   DarkModeSwitcher,
   Logo,
   UnauthenticatedMenu,
@@ -29,7 +29,7 @@ export function Header({ logo, logoDark }: HeaderModel) {
           <UnauthenticatedMenu />
           <div className="hidden items-center gap-6 md:flex">
             <DarkModeSwitcher />
-            <CallToAction link="/area-do-cliente" />
+            <Button label="Área do cliente" />
           </div>
         </header>
       ),
