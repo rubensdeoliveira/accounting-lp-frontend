@@ -1,5 +1,5 @@
-import { Footer, Header } from '@/client/application/sections'
-import { SideBar } from '@rubensdeoliveira-ui/react'
+import { Footer } from '@/client/application/sections'
+import { Navbar } from '../navbar'
 import { DashboardContainerModel } from './models'
 
 export function DashboardContainer({
@@ -9,10 +9,7 @@ export function DashboardContainer({
 }: DashboardContainerModel) {
   return (
     <>
-      <Header {...header} />
-      <SideBar sidebarMainItems={[]} sidebarSecondaryItems={[]} user={{}}>
-        {children}
-      </SideBar>
+      <Navbar {...header}>{children}</Navbar>
       <Footer {...footer} />
     </>
   )

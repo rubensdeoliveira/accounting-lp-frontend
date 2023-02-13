@@ -5,12 +5,12 @@ import {
   HeroSection,
   WhyChooseUsSection,
   Footer,
-  Header,
   Main,
 } from '@/client/application/sections'
 import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { HomeQueryModel } from '@/client/infra/graphql/home/models'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
+import { Navbar } from '@/client/application/components'
 
 export const getServerSideProps = withSSRGuest(async () => {
   const [homeResponse, sharedResponse] = await Promise.all([
@@ -31,13 +31,13 @@ export default function Home({
   header,
 }: HomeQueryModel & SharedQueryModel) {
   return (
-    <>
-      <Header {...header} />
-      <Main>
+    <Navbar {...header}>
+      {/* <Main>
         <HeroSection {...hero} />
         <WhyChooseUsSection {...whyChooseUs} />
       </Main>
-      <Footer {...footer} />
-    </>
+      <Footer {...footer} /> */}
+      dsd
+    </Navbar>
   )
 }
