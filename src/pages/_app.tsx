@@ -3,6 +3,7 @@ import { type Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 
 import '@/client/application/styles/global.css'
+import '@rubensdeoliveira-ui/react/dist/index.css'
 import { Providers } from '@/client/application/providers'
 import { api } from '@/shared/utils'
 

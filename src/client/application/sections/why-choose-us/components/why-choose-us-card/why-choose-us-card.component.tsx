@@ -20,7 +20,11 @@ export function WhyChooseUsCard({
       <p className="mb-14 text-base leading-[1.6] tracking-default text-white/70 md:text-[1.0625rem] lg:text-lg">
         {description}
       </p>
-      <Button label={buttonText} buttonType="learnMore" />
+      <Button
+        label={buttonText}
+        variant="link"
+        iconRight="ArrowSmallRightIcon"
+      />
     </div>
   )
 }

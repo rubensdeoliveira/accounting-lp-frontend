@@ -31,13 +31,13 @@ export default function Home({
   header,
 }: HomeQueryModel & SharedQueryModel) {
   return (
-    <Navbar {...header}>
-      {/* <Main>
+    <>
+      <Navbar {...header} />
+      <Main>
         <HeroSection {...hero} />
         <WhyChooseUsSection {...whyChooseUs} />
       </Main>
-      <Footer {...footer} /> */}
-      dsd
-    </Navbar>
+      <Footer {...footer} />
+    </>
   )
 }

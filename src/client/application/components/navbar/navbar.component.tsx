@@ -11,8 +11,6 @@ export function Navbar({ logo, logoDark, children }: NavbarModel) {
       {children}
     </AuthenticatedMenu>
   ) : (
-    <UnauthenticatedMenu logo={logo} logoDark={logoDark}>
-      {children}
-    </UnauthenticatedMenu>
+    <UnauthenticatedMenu logo={logo} logoDark={logoDark} />
   )
 }

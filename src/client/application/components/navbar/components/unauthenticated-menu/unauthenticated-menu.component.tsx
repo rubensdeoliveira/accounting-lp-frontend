@@ -1,4 +1,5 @@
-import { ResponsiveNavbar } from '@rubensdeoliveira-ui/react'
+import { Button, Navbar } from '@rubensdeoliveira-ui/react'
+import { space } from '@rubensdeoliveira-ui/tokens'
 import { Logo } from '../logo'
 
 import { UnauthenticatedMenuModel } from './models'
@@ -6,15 +7,17 @@ import { UnauthenticatedMenuModel } from './models'
 export function UnauthenticatedMenu({
   logo,
   logoDark,
-  children,
 }: UnauthenticatedMenuModel) {
   return (
-    <ResponsiveNavbar
-      navbarFixedItems={[{ liChildren: <p>teste</p> }]}
-      navbarMenuItems={[{ liChildren: <p>teste</p>, isActive: true }]}
-      navbarLogo={<Logo logo={logo} logoDark={logoDark} />}
-    >
-      {children}
-    </ResponsiveNavbar>
+    <Navbar
+      ctaButton={<Button>Teste</Button>}
+      logo={<Logo logo={logo} logoDark={logoDark} />}
+      navigationItems={[{ liChildren: <p>Home</p> }]}
+      style={{
+        bar: 'bg-red500',
+        container: 'py-8',
+        mobileMenu: 'bg-yellow-500',
+      }}
+    />
   )
 }
