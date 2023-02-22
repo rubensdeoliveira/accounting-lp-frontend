@@ -424,12 +424,13 @@
   resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-4.10.1.tgz#c7062747f254e5d5fce98a8cae566c25f9f29fb2"
   integrity sha512-B3tcTxjx196nuAu1GOTKO9cGPUgTFHYRdkPkTS4m5ptb2cejyBlH9X7GOfSt3xlI7p4zAJDshJP4JJivCg9ouA==
 
-"@rubensdeoliveira-ui/react@1.16.0":
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/@rubensdeoliveira-ui/react/-/react-1.16.0.tgz#b66e4cbe664094b3b48367534e52dfcdede9e4b5"
-  integrity sha512-6AdSCGXO9iD7Z+/VkONIFpgvSEyyNn6+Z2EqieDIEzZKCmh8c8YxjjGPIzFWDOD/ojsQkvWwjlf7WXv8VBQLrw==
+"@rubensdeoliveira-ui/react@1.22.0":
+  version "1.22.0"
+  resolved "https://registry.yarnpkg.com/@rubensdeoliveira-ui/react/-/react-1.22.0.tgz#c38f3111dcc6d2f7bd782abb09ce2d87ab9bbaa8"
+  integrity sha512-R5FWtnaY+j9pNRHRS9ZU3fuFaFmSlWHj7nQ3FgILtYQV2EU4H90iX1IXKIHc+dTT9xc1U6XIT7o8liznxZhqjA==
   dependencies:
     "@heroicons/react" "^2.0.14"
+    class-variance-authority "^0.4.0"
     jotai "^2.0.0"
     npm "^8.0.0"
 
@@ -1045,6 +1046,11 @@ cidr-regex@^3.1.1:
   integrity sha512-RBqYd32aDwbCMFJRL6wHOlDNYJsPNTt8vC82ErHF5vKt8QQzxm1FrkW8s/R5pVrXMf17sba09Uoy91PKiddAsw==
   dependencies:
     ip-regex "^4.1.0"
+
+class-variance-authority@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/class-variance-authority/-/class-variance-authority-0.4.0.tgz#2ff1b5a836a68ce7a2dac0cc12f6fdc50e47f666"
+  integrity sha512-74enNN8O9ZNieycac/y8FxqgyzZhZbxmCitAtAeUrLPlxjSd5zA7LfpprmxEcOmQBnaGs5hYhiSGnJ0mqrtBLQ==
 
 clean-stack@^2.0.0:
   version "2.2.0"

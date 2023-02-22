@@ -1,1 +1,1 @@
-export * from './navbarItems.constant'
+export * from './navbarNavigationItems.constant'

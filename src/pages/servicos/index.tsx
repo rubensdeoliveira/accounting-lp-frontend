@@ -1,6 +1,6 @@
 import {
   Footer,
-  Header,
+  // Header,
   WhyChooseUsSection,
   Main,
 } from '@/client/application/sections'
@@ -30,7 +30,7 @@ export default function OurServices({
 }: OurServicesQueryModel & SharedQueryModel) {
   return (
     <>
-      <Header {...header} />
+      {/* <Header {...header} /> */}
       <Main>
         <WhyChooseUsSection {...whyChooseUs} />
       </Main>

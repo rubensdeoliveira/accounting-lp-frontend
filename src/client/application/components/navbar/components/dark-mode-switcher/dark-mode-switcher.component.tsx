@@ -9,7 +9,7 @@ export function DarkModeSwitcher() {
   const toggleTheme = useCallback(() => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
     setTheme(newTheme)
-  }, [theme])
+  }, [theme, setTheme])
 
   return (
     <Button onClick={toggleTheme} type="button" variant="ghost">

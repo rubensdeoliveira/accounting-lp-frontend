@@ -9,7 +9,7 @@ import { normalizeData, withSSRGuest } from '@/client/application/helpers'
 import { getSharedQuery } from '@/client/infra/graphql/shared/queries'
 import { client } from '@/client/infra/graphql/common/client'
 import { SharedQueryModel } from '@/client/infra/graphql/shared/models'
-import { Footer, Header } from '@/client/application/sections'
+import { Footer } from '@/client/application/sections'
 import { Button, Input, Toast } from '@rubensdeoliveira-ui/react'
 
 export const getServerSideProps = withSSRGuest(async () => {
@@ -36,7 +36,7 @@ export default function ClientArea({ footer, header }: SharedQueryModel) {
 
   return (
     <div className="flex min-h-[100vh] flex-col">
-      <Header {...header} />
+      {/* <Header {...header} /> */}
       <div className="flex flex-1 items-center justify-center py-16">
         <form
           className="flex w-full max-w-[340px] flex-col"
