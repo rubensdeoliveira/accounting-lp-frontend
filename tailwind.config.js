@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}"
-  ],
+  content: ['./src/**/*.tsx'],
   theme: {
     extend: {
       colors: {
@@ -11,7 +9,6 @@ module.exports = {
         'gray900': '#2E2E30',
         'red500': '#d2140a',
         'red900': '#6C0C0F'
-
       },
       fontFamily: {
         raleway: 'Raleway',

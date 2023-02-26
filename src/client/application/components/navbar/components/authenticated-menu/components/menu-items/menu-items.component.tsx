@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation';
 import { useMemo } from 'react'
 
 import { menuItems } from './constants'
@@ -9,7 +9,7 @@ export function MenuItems() {
 
   const resolveMenuSelected = useMemo(
     () => menuItems.find(menuItem => menuItem && menuItem.link === pathname),
-    [pathname, menuItems],
+    [pathname],
   )
 
   const renderMenuItems = useMemo(
